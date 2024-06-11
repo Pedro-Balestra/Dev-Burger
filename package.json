@@ -1,0 +1,17 @@
+{
+  "name": "dev-burger",
+  "version": "1.0.0",
+  "description": "DevBurger API.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": {
+    "name": "Pedro Balestra",
+    "url": "https://github.com/Pedro-Balestra"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
