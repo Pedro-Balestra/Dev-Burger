@@ -1,4 +1,6 @@
+import jwt from 'jsonwebtoken';
 import * as Yup from 'yup';
+import authConfig from '../../config/auth';
 import User from '../models/User';
 
 class SessionController {
@@ -36,9 +38,15 @@ class SessionController {
 		if (!isSamePassword) {
 			return emailOrPasswordIncorrect();
 		}
-		return res
-			.status(201)
-			.json({ id: user.id, name: user.name, email, admin: user.admin });
+		return res.status(201).json({
+			id: user.id,
+			name: user.name,
+			email,
+			admin: user.admin,
+			token: jwt.sign({ id: user.id }, authConfig.secret, {
+				expiresIn: authConfig.expiresIn,
+			}),
+		});
 	}
 }
 
