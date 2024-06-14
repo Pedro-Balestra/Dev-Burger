@@ -1,7 +1,5 @@
 import bcrypt from 'bcrypt';
 import Sequelize, { Model } from 'sequelize';
-
-// biome-ignore lint/complexity/noStaticOnlyClass: <explanation>
 class User extends Model {
 	static init(sequelize) {
 		// biome-ignore lint/complexity/noThisInStatic: <explanation>
