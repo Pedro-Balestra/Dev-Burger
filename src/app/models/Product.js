@@ -27,7 +27,7 @@ class Product extends Model {
 	static associate(models) {
 		// biome-ignore lint/complexity/noThisInStatic: <explanation>
 		this.belongsTo(models.Category, {
-			foreignKey: 'categoryId',
+			foreignKey: 'category_id',
 			as: 'category',
 		});
 	}
