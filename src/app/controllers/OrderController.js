@@ -1,6 +1,7 @@
 import * as Yup from 'yup';
 import Category from '../models/Category';
 import Product from '../models/Product';
+import Order from '../schemas/Order';
 
 class OrderController {
 	async store(req, res) {
@@ -59,9 +60,12 @@ class OrderController {
 				name: req.userName,
 			},
 			products: formattedProducts,
+			status: 'Pedido realizado',
 		};
 
-		return res.status(201).json(order);
+		const createdOrder = await Order.create(order);
+
+		return res.status(201).json(createdOrder);
 	}
 }
 
