@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import multer from 'multer';
 import CategoryController from './app/controllers/CategoryController';
+import OrderController from './app/controllers/OrderController';
 import ProductsController from './app/controllers/ProductsController';
 import SessionController from './app/controllers/SessionController';
 import UserController from './app/controllers/UserController';
@@ -18,4 +19,7 @@ routes.post('/products', upload.single('file'), ProductsController.store);
 routes.get('/products', ProductsController.index);
 routes.post('/categories', CategoryController.store);
 routes.get('/categories', CategoryController.index);
+
+routes.post('/order', OrderController.store);
+
 export default routes;
