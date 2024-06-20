@@ -1,6 +1,7 @@
 import * as Yup from 'yup';
 import Category from '../models/Category';
 import Product from '../models/Product';
+import User from '../models/User';
 
 class ProductController {
 	async store(req, res) {
@@ -24,6 +25,12 @@ class ProductController {
 			category_id,
 			path,
 		});
+
+		const { admin: isAdmin } = await User.findByPk(req.userId);
+
+		if (!isAdmin) {
+			return res.status(401).json();
+		}
 
 		return res.status(201).json(product);
 	}

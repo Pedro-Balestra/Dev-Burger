@@ -1,6 +1,7 @@
 import * as Yup from 'yup';
 import Category from '../models/Category';
 import Product from '../models/Product';
+import User from '../models/User';
 import Order from '../schemas/Order';
 
 class OrderController {
@@ -91,6 +92,11 @@ class OrderController {
 			await Order.updateOne({ _id: id }, { status });
 		} catch (error) {
 			return res.status(400).json({ error: error.message });
+		}
+		const { admin: isAdmin } = await User.findByPk(req.userId);
+
+		if (!isAdmin) {
+			return res.status(401).json();
 		}
 
 		return res.json({ message: 'Status updated sucessfully' });
