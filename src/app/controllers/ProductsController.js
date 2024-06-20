@@ -100,7 +100,7 @@ class ProductController {
 			},
 		);
 
-		return res.status(201).json(product);
+		return res.status(201).json();
 	}
 }
 
