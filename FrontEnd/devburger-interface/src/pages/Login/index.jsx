@@ -12,6 +12,7 @@ import {
 	Title,
 } from './styles';
 
+import { toast } from 'react-toastify';
 import { api } from '../../services/api';
 
 const schema = yup
@@ -43,10 +44,17 @@ export function Login() {
 		resolver: yupResolver(schema),
 	});
 	const onSubmit = async (data) => {
-		const response = await api.post('/sessions', {
-			email: data.email,
-			password: data.password,
-		});
+		const response = await toast.promise(
+			api.post('/sessions', {
+				email: data.email,
+				password: data.password,
+			}),
+			{
+				pending: 'Verificando seus dados',
+				success: 'Seja Bem-vindo(a)',
+				error: 'Email ou senha incorretos',
+			},
+		);
 	};
 
 	return (
