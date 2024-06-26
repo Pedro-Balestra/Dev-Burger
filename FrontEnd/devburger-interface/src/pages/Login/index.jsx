@@ -12,6 +12,8 @@ import {
 	Title,
 } from './styles';
 
+import { api } from '../../services/api';
+
 const schema = yup
 	.object({
 		email: yup.string().email().required(),
@@ -40,7 +42,12 @@ export function Login() {
 	} = useForm({
 		resolver: yupResolver(schema),
 	});
-	const onSubmit = (data) => console.log(data);
+	const onSubmit = async (data) => {
+		const response = await api.post('/sessions', {
+			email: data.email,
+			password: data.password,
+		});
+	};
 
 	return (
 		<Container>
