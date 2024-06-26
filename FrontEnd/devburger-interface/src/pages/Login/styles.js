@@ -6,7 +6,7 @@ export const Container = styled.div`
     display: flex;
     height: 100vh;
     width: 100vw;
-`
+`;
 export const LeftContainer = styled.div`
     background: url('${BackgrooundLogin}');
     background-size: cover;
@@ -23,7 +23,7 @@ export const LeftContainer = styled.div`
     img{
         width: 80%;
     }
-`
+`;
 export const RightContainer = styled.div`
     display: flex;
     align-items: center;
@@ -45,11 +45,10 @@ export const RightContainer = styled.div`
 
     a{
         text-decoration: underline;
-        cursor: pointer;
         color: #fff;
     }
     
-`
+`;
 export const Title = styled.h2`
     font-family: "Road Rage", sans-serif;
     font-size: 40px;
@@ -57,9 +56,10 @@ export const Title = styled.h2`
 
     span{
         color: #9758A6;
+        font-family: "Road Rage", sans-serif;
     }
 
-`
+`;
 export const From = styled.form`
 
     display: flex;
@@ -69,7 +69,7 @@ export const From = styled.form`
     width: 100%;
     max-width: 400px;
 
-`
+`;
 export const InputContainer = styled.div`
 
     display: flex;
@@ -91,8 +91,4 @@ export const InputContainer = styled.div`
         font-weight: 600;
     }
 
-`
-export const Link = styled.a`
-`
-export const Button = styled.button`
-`
+`;

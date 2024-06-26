@@ -214,7 +214,7 @@
 
 "@biomejs/biome@1.8.2":
   version "1.8.2"
-  resolved "https://registry.npmjs.org/@biomejs/biome/-/biome-1.8.2.tgz"
+  resolved "https://registry.yarnpkg.com/@biomejs/biome/-/biome-1.8.2.tgz#a2c93113409b863eb043095e1aa85f11bf31af04"
   integrity sha512-XafCzLgs0xbH0bCjYKxQ63ig2V86fZQMq1jiy5pyLToWk9aHxA8GAUxyBtklPHtPYZPGEPOYglQHj4jyfUp+Iw==
   optionalDependencies:
     "@biomejs/cli-darwin-arm64" "1.8.2"

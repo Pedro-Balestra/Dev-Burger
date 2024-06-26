@@ -1,5 +1,6 @@
 import Logo from '../../assets/logo.svg'
-import { Button, Container, From, InputContainer, LeftContainer, RightContainer, Title } from "./styles"
+import { Button } from '../../components/Button'
+import { Container, From, InputContainer, LeftContainer, RightContainer, Title } from "./styles"
 
 export function Login() {
     return (
@@ -16,15 +17,16 @@ export function Login() {
                 <From>
                     <InputContainer>
                         <label>Email</label>
-                        <input type='email'></input>
+                        <input type='email' />
                     </InputContainer>
                     <InputContainer>
                         <label>Senha</label>
-                        <input type='password'></input>
+                        <input type='password' />
                     </InputContainer>
                     <Button>Entrar</Button>
                 </From>
-                <p>Não possui conta? <a>Clique aqui</a></p>
+                {/* biome-ignore lint/a11y/useValidAnchor: <explanation> */}
+                    <p>Não possui conta? <a>Clique aqui</a></p>
             </RightContainer>
         </Container>
     )
