@@ -1,8 +1,8 @@
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm } from "react-hook-form";
-import * as yup from "yup";
-import Logo from "../../assets/logo.svg";
-import { Button } from "../../components/Button";
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useForm } from 'react-hook-form';
+import * as yup from 'yup';
+import Logo from '../../assets/logo.svg';
+import { Button } from '../../components/Button';
 import {
 	Container,
 	From,
@@ -10,7 +10,7 @@ import {
 	LeftContainer,
 	RightContainer,
 	Title,
-} from "./styles";
+} from './styles';
 
 const schema = yup
 	.object({
@@ -24,12 +24,12 @@ export function Login() {
 		.object({
 			email: yup
 				.string()
-				.email("Digite um e-mail válido")
-				.required("O e-mail é obrigatório"),
+				.email('Digite um e-mail válido')
+				.required('O e-mail é obrigatório'),
 			password: yup
 				.string()
-				.min(6, "A senha deve ter pelo menos 6 caracteres")
-				.required("Digite uma senha"),
+				.min(6, 'A senha deve ter pelo menos 6 caracteres')
+				.required('Digite uma senha'),
 		})
 		.required();
 
@@ -56,18 +56,18 @@ export function Login() {
 				<From onSubmit={handleSubmit(onSubmit)}>
 					<InputContainer>
 						<label>Email</label>
-						<input type="email" {...register("email")} />
+						<input type="email" {...register('email')} />
 						<p>{errors?.email?.message}</p>
 					</InputContainer>
 					<InputContainer>
 						<label>Senha</label>
-						<input type="password" {...register("password")} />
+						<input type="password" {...register('password')} />
 						<p>{errors?.password?.message}</p>
 					</InputContainer>
 					<Button type="submit">Entrar</Button>
 				</From>
 				<p>
-					Não possui conta?{" "}
+					Não possui conta?{' '}
 					{/* biome-ignore lint/a11y/useValidAnchor: <explanation> */}
 					<a>Clique aqui</a>
 				</p>

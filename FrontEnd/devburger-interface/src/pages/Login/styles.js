@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import BackgrooundLogin from "../../assets/background-login.svg";
-import Backgroound from "../../assets/background.svg";
+import styled from 'styled-components';
+import BackgrooundLogin from '../../assets/background-login.svg';
+import Backgroound from '../../assets/background.svg';
 
 export const Container = styled.div`
     display: flex;
