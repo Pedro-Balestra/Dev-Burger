@@ -45,7 +45,7 @@ export function Login() {
 	});
 	const onSubmit = async (data) => {
 		const response = await toast.promise(
-			api.post('/sessions', {
+			api.post('/session', {
 				email: data.email,
 				password: data.password,
 			}),
