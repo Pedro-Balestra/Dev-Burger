@@ -15,9 +15,10 @@ import {
 import { toast } from 'react-toastify';
 import { api } from '../../services/api';
 
-export function Login() {
+export function Register() {
 	const schema = yup
 		.object({
+			name: yup.string().required('O nome é Obrigatório'),
 			email: yup
 				.string()
 				.email('Digite um e-mail válido')
@@ -26,6 +27,10 @@ export function Login() {
 				.string()
 				.min(6, 'A senha deve ter pelo menos 6 caracteres')
 				.required('Digite uma senha'),
+			confirmPassword: yup
+				.string()
+				.oneOf([yup.ref('password')], 'As senhas devem ser iguas')
+				.required('Confirma a sua senha'),
 		})
 		.required();
 
@@ -38,14 +43,15 @@ export function Login() {
 	});
 	const onSubmit = async (data) => {
 		const response = await toast.promise(
-			api.post('/session', {
+			api.post('/users', {
+				name: data.name,
 				email: data.email,
 				password: data.password,
 			}),
 			{
 				pending: 'Verificando seus dados',
-				success: 'Seja Bem-vindo(a)',
-				error: 'Email ou senha incorretos',
+				success: 'Cadastro efetuado com sucesso',
+				error: 'Ops!!! Algo deu errado! Tente novamente',
 			},
 		);
 	};
@@ -56,12 +62,13 @@ export function Login() {
 				<img src={Logo} alt="logo-devbuger" />
 			</LeftContainer>
 			<RightContainer>
-				<Title>
-					Olá, seja bem vindo ao <span>Dev Burguer!</span>
-					<br />
-					Acesse com seu <span>Login e senha.</span>
-				</Title>
+				<Title>Criar conta</Title>
 				<From onSubmit={handleSubmit(onSubmit)}>
+					<InputContainer>
+						<label>Nome</label>
+						<input type="text" {...register('name')} />
+						<p>{errors?.name?.message}</p>
+					</InputContainer>
 					<InputContainer>
 						<label>Email</label>
 						<input type="email" {...register('email')} />
@@ -72,10 +79,15 @@ export function Login() {
 						<input type="password" {...register('password')} />
 						<p>{errors?.password?.message}</p>
 					</InputContainer>
-					<Button type="submit">Entrar</Button>
+					<InputContainer>
+						<label>Confirmar senha</label>
+						<input type="password" {...register('confirmPassword')} />
+						<p>{errors?.password?.message}</p>
+					</InputContainer>
+					<Button type="submit">Criar conta</Button>
 				</From>
 				<p>
-					Não possui conta?{' '}
+					Já possui conta?{' '}
 					{/* biome-ignore lint/a11y/useValidAnchor: <explanation> */}
 					<a>Clique aqui</a>
 				</p>
