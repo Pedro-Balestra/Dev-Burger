@@ -1,16 +1,21 @@
 import styled from 'styled-components';
 
 export const ContainerButton = styled.button`
-    width: 100%;
-    height: 52px;
+    width: 50%;
+    height: 36px;
     border: none;
-    border-radius: 5px;
+    border-radius: 20px;
     background-color: #9758a6;
-    font-family: "Road Rage", sans-serif;
-    font-size: 30px;
+    font-size: 16px;
     color: #fff;
+    margin-top: 74px;
+    margin-bottom: 25px;
 
     &:hover{
-        background-color: #6f3576;
+        opacity: 0.8;
+    }
+
+    &:active{
+        opacity: 0.6;
     }
 `;

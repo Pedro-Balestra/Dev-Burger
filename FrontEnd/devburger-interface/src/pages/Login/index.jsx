@@ -1,21 +1,25 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
-import Logo from '../../assets/logo.svg';
 import { Button } from '../../components/Button';
 import {
 	Container,
-	From,
+	ContainerItens,
 	InputContainer,
-	LeftContainer,
-	RightContainer,
+	Link,
+	LoginImage,
 	Title,
 } from './styles';
 
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { api } from '../../services/api';
 
+import LoginImg from '../../assets/background-login.svg';
+import Logo from '../../assets/logo.svg';
+
 export function Login() {
+	const navigate = useNavigate();
 	const schema = yup
 		.object({
 			email: yup
@@ -44,7 +48,14 @@ export function Login() {
 			}),
 			{
 				pending: 'Verificando seus dados',
-				success: 'Seja Bem-vindo(a)',
+				success: {
+					render() {
+						setTimeout(() => {
+							navigate('/');
+						}, 2000);
+						return 'Seja Bem-vindo(a)';
+					},
+				},
 				error: 'Email ou senha incorretos',
 			},
 		);
@@ -52,34 +63,27 @@ export function Login() {
 
 	return (
 		<Container>
-			<LeftContainer>
-				<img src={Logo} alt="logo-devbuger" />
-			</LeftContainer>
-			<RightContainer>
-				<Title>
-					Olá, seja bem vindo ao <span>Dev Burguer!</span>
-					<br />
-					Acesse com seu <span>Login e senha.</span>
-				</Title>
-				<From onSubmit={handleSubmit(onSubmit)}>
-					<InputContainer>
+			<LoginImage src={LoginImg} alt="login-image" />
+			<ContainerItens>
+				<img src={Logo} alt="logo" />
+				<Title>Login</Title>
+				<form noValidate onSubmit={handleSubmit(onSubmit)}>
+					<InputContainer error={errors.email?.message}>
 						<label>Email</label>
 						<input type="email" {...register('email')} />
-						<p>{errors?.email?.message}</p>
+						<p>{errors.email?.message}</p>
 					</InputContainer>
-					<InputContainer>
+					<InputContainer error={errors.password?.message}>
 						<label>Senha</label>
 						<input type="password" {...register('password')} />
-						<p>{errors?.password?.message}</p>
+						<p>{errors.password?.message}</p>
 					</InputContainer>
 					<Button type="submit">Entrar</Button>
-				</From>
+				</form>
 				<p>
-					Não possui conta?{' '}
-					{/* biome-ignore lint/a11y/useValidAnchor: <explanation> */}
-					<a>Clique aqui</a>
+					Não possui conta? <Link to="/cadastro">Clique aqui</Link>
 				</p>
-			</RightContainer>
+			</ContainerItens>
 		</Container>
 	);
 }

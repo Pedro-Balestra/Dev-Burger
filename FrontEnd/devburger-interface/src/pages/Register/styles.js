@@ -1,68 +1,51 @@
+import { Link as ReactLink } from 'react-router-dom';
 import styled from 'styled-components';
-import BackgrooundLogin from '../../assets/background-login.svg';
-import Backgroound from '../../assets/background.svg';
+import Background from '../../assets/background.svg';
 
 export const Container = styled.div`
-    display: flex;
     height: 100vh;
     width: 100vw;
-`;
-export const LeftContainer = styled.div`
-    background: url('${BackgrooundLogin}');
+    background: url('${Background}');
     background-size: cover;
-    background-position: center;
-
-    height: 100%;
-    width: 100%;
-    max-width: 50%;
-
     display: flex;
-    align-items: center;
     justify-content: center;
-    
-    img{
-        width: 80%;
-    }
-`;
-export const RightContainer = styled.div`
-    display: flex;
     align-items: center;
-    justify-content: center;
-    flex-direction: column ;
 
-    height: 100%;
-    width: 100%;
-    max-width: 50%;
-
-    background: url('${Backgroound}');
-    background-color: #1e1e1e ;
-    
     p{
-        color: #fff;
-        font-size: 18px;
-        font-weight: 800;
+        color: #FFF;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
     }
-
-    a{
-        text-decoration: underline;
-        color: #fff;
-    }
-    
 `;
-export const Title = styled.h2`
-    font-family: "Road Rage", sans-serif;
-    font-size: 40px;
-    color: #fff;
-    color: #9758A6;
-`;
-export const From = styled.form`
 
+export const RegisterImage = styled.img`
+    height: 80%;
+    border-radius: 10px 0px 0px 10px;
+`;
+export const ContainerItens = styled.div`
+    background: #373737;
+    border-radius: 0 10px 10px 0;
+    height: 80%;
+    padding: 25px 75px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    padding: 20px;
-    width: 100%;
-    max-width: 400px;
+    justify-content: center;
+  
+`;
+export const Title = styled.h2`
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    color: #fff;
+    text-align: center;
+    margin-top: 19px;
+`;
+export const From = styled.form`
+    display: flex;
+    flex-direction: column;
 
 `;
 export const InputContainer = styled.div`
@@ -71,27 +54,33 @@ export const InputContainer = styled.div`
     flex-direction: column;
     gap: 5px;
     width: 100%;
+    margin: 5px 0;
 
     input{
         width: 100%;
-        border: none;
+        border: ${(props) => (props.error ? '1.5px solid #cc1717' : 'none')};
         height: 52px;
         border-radius: 5px;
         padding: 0 16px;
     }
 
     label{
-        font-size: 16px;
+        font-size: 12px;
         color: #fff;
-        font-weight: 600;
+        font-weight: 500;
     }
 
     p{
         font-size: 14px;
         line-height: 80%;
         color: #cf3057;
-        font-weight: 600;
         height: 10px;
     }
+
+`;
+
+export const Link = styled(ReactLink)`
+    color: #fff;
+    text-decoration: underline;
 
 `;
