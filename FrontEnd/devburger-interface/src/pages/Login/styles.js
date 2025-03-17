@@ -34,8 +34,8 @@ export const ContainerItens = styled.div`
     form{
         display: flex;
         flex-direction: column;
+        align-items: center;
     }
-  
 `;
 export const Title = styled.h2`
 
@@ -78,7 +78,6 @@ export const InputContainer = styled.div`
         height: 10px;
         margin-top: 5px;
     }
-    
 `;
 
 export const Link = styled(ReactLink)`
