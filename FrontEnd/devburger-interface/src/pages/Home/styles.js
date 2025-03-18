@@ -21,7 +21,11 @@ export const Container = styled.section`
         rgba(255,255,255,0.7)
     ), url('${Background}');
     background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column; /* Organiza os elementos verticalmente */
 `;
 export const Content = styled.div`
     padding-bottom: 70px;
+
 `
