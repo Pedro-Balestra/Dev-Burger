@@ -20,7 +20,8 @@ export const Container = styled.section`
         rgba(255,255,255,0.7),
         rgba(255,255,255,0.7)
     ), url('${Background}');
-    height: 500px;
     background-size: cover;
 `;
-export const Content = styled.div``
+export const Content = styled.div`
+    padding-bottom: 70px;
+`
