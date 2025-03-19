@@ -34,6 +34,7 @@ export const ContainerItems = styled.div`
     padding: 20px 10px;
     width: 100%;
     height: 250px;
+    cursor: grab;
     p{
         color: #fff;
         background-color: rgba(0,0,0,.5);

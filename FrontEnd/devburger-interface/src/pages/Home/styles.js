@@ -22,8 +22,9 @@ export const Container = styled.section`
     ), url('${Background}');
     background-size: cover;
     background-position: center;
+    width: 100vw;
     display: flex;
-    flex-direction: column; /* Organiza os elementos verticalmente */
+    flex-direction: column;
 `;
 export const Content = styled.div`
     padding-bottom: 70px;
