@@ -10,6 +10,7 @@ export const Container = styled.div`
     background-color: #ffff;
     cursor: grab;
     box-shadow: rgba(0,0,0,0.35) 0px 5px 15px;
+    position: relative;
 
     div{
         width: 100%;
@@ -38,5 +39,5 @@ export const Container = styled.div`
 export const CardImage = styled.img`
     height: 100px;
     position: absolute;
-    top: -15px;
+    top: -50px;
 `;
