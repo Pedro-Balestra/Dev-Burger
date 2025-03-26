@@ -17,9 +17,11 @@ import { api } from '../../services/api';
 
 import LoginImg from '../../assets/background-login.svg';
 import Logo from '../../assets/logo.svg';
+import { useUser } from '../../hooks/UserContext';
 
 export function Login() {
 	const navigate = useNavigate();
+	const {putUserData} =  useUser();
 	const schema = yup
 		.object({
 			email: yup
@@ -41,7 +43,7 @@ export function Login() {
 		resolver: yupResolver(schema),
 	});
 	const onSubmit = async (data) => {
-		const {data: {token} } = await toast.promise(
+		const {data: userData } = await toast.promise(
 			api.post('/session', {
 				email: data.email,
 				password: data.password,
@@ -60,7 +62,7 @@ export function Login() {
 			},
 		);
 
-		localStorage.setItem('token', token);
+		putUserData(userData);
 	};
 
 	return (
