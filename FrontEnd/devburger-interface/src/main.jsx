@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+import { Header } from './components/Header/index.jsx';
 import AppProvider from './hooks/inde.jsx';
 import { router } from './routes';
 import GlobalStyles from './styles/globalStyles.js';
