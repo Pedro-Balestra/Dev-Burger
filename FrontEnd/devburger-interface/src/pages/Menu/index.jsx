@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import { FiArrowLeft } from "react-icons/fi";
 import { useLocation, useNavigate } from 'react-router-dom';
+import { BackButtonArrow } from '../../components/BackButton';
 import { CardProduct } from '../../components/CardProduct';
 import { api } from '../../services/api';
 import { formatPrice } from '../../utils/formatPrice';
-import { BackButton, Banner, CategoryButton, CategoryMenu, Container, ProductsContainer } from './styles';
+import { Banner, CategoryButton, CategoryMenu, Container, ProductsContainer } from './styles';
 
 export function Menu() {
     const [categories, setcategories] =  useState([]);
@@ -59,15 +59,7 @@ export function Menu() {
         <Container>
             <Banner>
                 <h1>O MELHOR <br />HAMBUERGER <br />ESTÁ AQUI! <span>Esse cardápio está irresistível!</span></h1>
-                <BackButton
-                    onClick={()=>{
-                        navigate(
-                            {
-                                pathname: '/',
-                            }
-                        )
-                    }}
-                > <FiArrowLeft size={30}/></BackButton>
+                <BackButtonArrow path='/'></BackButtonArrow>
             </Banner>
             <CategoryMenu>
                 {categories.map((category) =>(
