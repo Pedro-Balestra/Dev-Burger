@@ -16,10 +16,7 @@ export const Banner = styled.div`
     }
 `;
 export const Container = styled.section`
-    background: linear-gradient(
-        rgba(255,255,255,0.7),
-        rgba(255,255,255,0.7)
-    ), url('${Background}');
+    background: url('${Background}');
     background-size: cover;
     background-position: center;
     width: 100vw;

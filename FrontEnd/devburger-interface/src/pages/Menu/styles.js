@@ -8,15 +8,12 @@ export const Container = styled.div`
     width: 100%;
     min-height: 100vh;
     background-color: #f0f0f0;
-    background: linear-gradient(
-            rgba(255,255,255,0.7),
-            rgba(255,255,255,0.7)
-        ), url('${Background}');
-        background-size: cover;
-        background-position: center;
-        width: 100vw;
-        display: flex;
-        flex-direction: column;
+    background: url('${Background}');
+    background-size: cover;
+    background-position: center;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
 
 `;
 export const Banner = styled.div`
