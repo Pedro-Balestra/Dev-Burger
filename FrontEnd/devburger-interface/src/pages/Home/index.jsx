@@ -1,6 +1,5 @@
 import { BackButtonArrow } from "../../components/BackButton";
-import { CategoriesCarousel } from "../../components/CategoriesCarousel";
-import { OffersCarousel } from "../../components/OffersCarousel";
+import { CategoriesCarousel, OffersCarousel } from "../../components";
 import { Banner, Container, Content } from "./styles";
 
 export function Home() {
