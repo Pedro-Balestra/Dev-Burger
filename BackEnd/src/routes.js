@@ -3,6 +3,7 @@ import multer from 'multer';
 import CategoryController from './app/controllers/CategoryController';
 import OrderController from './app/controllers/OrderController';
 import ProductsController from './app/controllers/ProductsController';
+import CreatePaymetIntent from './app/controllers/stripe/CreatePaymetIntentController';
 import SessionController from './app/controllers/SessionController';
 import UserController from './app/controllers/UserController';
 import authMiddlewares from './app/middlewares/auth';
@@ -28,5 +29,7 @@ routes.put('/categories/:id', upload.single('file'), CategoryController.update);
 routes.post('/order', OrderController.store);
 routes.get('/order', OrderController.index);
 routes.put('/order/:id', OrderController.update);
+
+routes.post('/create-payment-intent', CreatePaymetIntent.store);
 
 export default routes;

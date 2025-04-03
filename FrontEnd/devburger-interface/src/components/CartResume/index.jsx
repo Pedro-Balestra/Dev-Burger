@@ -37,10 +37,10 @@ export function CartResume() {
             );
 
             if (status === 200 || status === 201) {
-                clearCart();
                 setTimeout(() => {
                     navigate('/');
                 }, 2000);
+                clearCart();
                 toast.success('Pedido realizado com sucesso!');
             } else if (status === 400) {
                 toast.error('Falha ao realizar o seu pedido!');
