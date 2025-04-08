@@ -1,21 +1,22 @@
+import 'dotenv/config';
 import Stripe from 'stripe';
 import * as Yup from 'yup';
 
 const stripe = new Stripe(process.env.STIPE_SECRET_KEY);
 
 const calculateOrderAmount = (items) => {
-    const total = items.reduce((acc, current) => { acc + current.price * current.quantity; }, 0);
+    const total = items.reduce((acc, current) => { return acc + current.price * current.quantity; }, 0);
 
     return total * 100;
 }
 
 class CreatePaymetIntentController {
     async store(req, res) {
-        const schema = Yup.object({
+        const schema = Yup.object().shape({
             products: Yup.array()
                 .required()
                 .of(
-                    Yup.object({
+                    Yup.object().shape({
                         id: Yup.number().required(),
                         quantity: Yup.number().required(),
                         price: Yup.number().required(),
@@ -29,21 +30,21 @@ class CreatePaymetIntentController {
             return res.status(400).json({ error: err.errors });
         }
 
-        const { products } = request.body;
+        const { products } = req.body;
 
         const amount = calculateOrderAmount(products)
 
         const paymentIntent = await stripe.paymentIntents.create({
             amount,
             currency: "brl",
-            // In the latest version of the API, specifying the `automatic_payment_methods` parameter is optional because Stripe enables its functionality by default.
             automatic_payment_methods: {
                 enabled: true,
             },
         });
 
-        response.json({
+        res.json({
             clientSecret: paymentIntent.client_secret,
+            dpmCheckerLink: `https://dashboard.stripe.com/settings/payment_methods/review?transaction_id=${paymentIntent.id}`,
         });
     }
 }
