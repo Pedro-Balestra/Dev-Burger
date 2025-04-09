@@ -1,3 +1,5 @@
+
+
 .App {
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 16px;
@@ -45,7 +47,7 @@
 .button {
     background: #0055DE;
     font-family: Arial, sans-serif;
-    color: ${(props) => props.theme.white};
+    color: #fff;
     border-radius: 4px;
     border: 0;
     padding: 12px 16px;
@@ -79,7 +81,7 @@
 }
 
 .spinner {
-    color: ${(props) => props.theme.white};
+    color: #fff;
     font-size: 22px;
     text-indent: -99999px;
     margin: 0px auto;
@@ -197,7 +199,7 @@ td {
 #retry-button {
     text-align: center;
     background: #0055DE;
-    color: ${(props) => props.theme.white};
+    color: #fff;
     border-radius: 4px;
     border: 0;
     padding: 12px 16px;
