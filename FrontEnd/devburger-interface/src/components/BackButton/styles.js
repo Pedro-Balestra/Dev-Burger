@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const BackButton = styled.button`
     height: 40px;
     width: 40px;
-    background: #9758a6;
+    background: ${(props) => props.theme.purple};
     border: none;
     border-radius: 50%;
     color: white;

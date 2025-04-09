@@ -12,7 +12,7 @@ export const Container = styled.div`
     align-items: center;
 
     p{
-        color: #FFF;
+        color: ${(props) => props.theme.white};
         font-size: 14px;
         font-style: normal;
         font-weight: 400;
@@ -39,7 +39,7 @@ export const Title = styled.h2`
     font-style: normal;
     font-weight: 500;
     line-height: normal;
-    color: #fff;
+    color: ${(props) => props.theme.white};
     text-align: center;
     margin-top: 19px;
 `;
@@ -66,21 +66,21 @@ export const InputContainer = styled.div`
 
     label{
         font-size: 12px;
-        color: #fff;
+        color: ${(props) => props.theme.white};
         font-weight: 500;
     }
 
     p{
         font-size: 14px;
         line-height: 80%;
-        color: #cf3057;
+        color: ${(props) => props.theme.darkRed};
         height: 10px;
     }
 
 `;
 
 export const Link = styled(ReactLink)`
-    color: #fff;
+    color: ${(props) => props.theme.white};
     text-decoration: underline;
 
 `;

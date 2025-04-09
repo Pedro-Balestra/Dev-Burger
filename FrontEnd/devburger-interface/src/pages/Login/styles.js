@@ -12,7 +12,7 @@ export const Container = styled.div`
     align-items: center;
 
     p{
-        color: #FFF;
+        color: ${(props) => props.theme.white};
         font-size: 14px;
         font-style: normal;
         font-weight: 400;
@@ -43,7 +43,7 @@ export const Title = styled.h2`
     font-weight: 500;
     font-size: 24px;
     line-height: 28px;
-    color: #FFFFFF;
+    color: ${(props) => props.theme.white};
     text-align: center;
     margin-top: 30px;
 
@@ -56,7 +56,7 @@ export const InputContainer = styled.div`
         font-weight: 500;
         font-size: 12px;
         line-height: 14px;
-        color: #FFFFFF;
+        color: ${(props) => props.theme.white};
         margin-top: 28px;
         margin-bottom: 5px;
     }
@@ -64,7 +64,7 @@ export const InputContainer = styled.div`
         width: 391.416px;
         height: 38.319px;
         border-radius: 5px;
-        background: #FFF;
+        background: ${(props) => props.theme.white};
         box-shadow: 3px 3px 10px 0px rgba(74, 144, 226, 0.19);
         border: ${(props) => (props.error ? '1.5px solid #cc1717' : 'none')};
         padding-left: 10px;
@@ -81,7 +81,7 @@ export const InputContainer = styled.div`
 `;
 
 export const Link = styled(ReactLink)`
-    color: #FFF;
+    color: ${(props) => props.theme.white};
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
