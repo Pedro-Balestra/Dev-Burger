@@ -46,7 +46,7 @@ export function CategoriesCarousel(){
                 partialVisbile={false}
                 itemClass="carousel-item"
             >
-                {categories.map(category => (
+                {categories.map((category) => (
                     <ContainerItems key={category.id} imageUrl={category.url}>
                         <CategoryButton
                             onClick={()=>{
