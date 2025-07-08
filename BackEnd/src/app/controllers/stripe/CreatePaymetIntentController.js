@@ -2,7 +2,7 @@ import 'dotenv/config';
 import Stripe from 'stripe';
 import * as Yup from 'yup';
 
-const stripe = new Stripe(process.env.STIPE_SECRET_KEY);
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 const calculateOrderAmount = (items) => {
     const total = items.reduce((acc, current) => { return acc + current.price * current.quantity; }, 0);
