@@ -16,11 +16,23 @@ import { formatDate } from '../../../utils/formateDate';
 import { orderStatusOptions } from './orderStatus.js';
 import { ProductImage, SelectStatus } from './styles.js';
 
-export function Row(props) {
-    const { row } = props;
+export function Row({ row, orders, setOrders }) {
     const [open, setOpen] = useState(false);
+    const [loading, setLoading] = useState(false);
+
 
     async function newStatusOrder(id, status) {
+        try {
+            setLoading(true);
+            await api.put(`order/${id}`, { status });
+            const newOrders = orders.map(order => order._id === id ? { ...order, status } : order);
+            setOrders(newOrders);
+        } catch (err) {
+            console.error(err);
+        } finally {
+            setLoading(false);
+        }
+
         await api.put(`order/${id}`, { status })
     }
 
@@ -45,6 +57,7 @@ export function Row(props) {
                     defaultValue={orderStatusOptions.find((status) => status.value === row.status || null)}
                     placeholder="Status"
                     onChange={status => newStatusOrder(row.orderId, status.value)}
+                    isLoading={loading}
                 />
                 </TableCell>
             </TableRow>
@@ -91,6 +104,8 @@ export function Row(props) {
 }
 
 Row.propTypes = {
+    orders: PropTypes.array.isRequired,
+    setOrders: PropTypes.func.isRequired,
     row: PropTypes.shape({
         orderId: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
