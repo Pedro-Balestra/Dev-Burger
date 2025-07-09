@@ -11,10 +11,18 @@ import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
+import { api } from '../../../services/api.js';
+import { formatDate } from '../../../utils/formateDate';
+import { orderStatusOptions } from './orderStatus.js';
+import { ProductImage, SelectStatus } from './styles.js';
 
 export function Row(props) {
     const { row } = props;
     const [open, setOpen] = useState(false);
+
+    async function newStatusOrder(id, status) {
+        await api.put(`order/${id}`, { status })
+    }
 
     return (
         <>
@@ -31,9 +39,14 @@ export function Row(props) {
                 <TableCell component="th" scope="row">
                     {row.orderId}
                 </TableCell>
-                <TableCell align="right">{row.name}</TableCell>
-                <TableCell align="right">{row.date}</TableCell>
-                <TableCell align="right">{row.status}</TableCell>
+                <TableCell>{row.name}</TableCell>
+                <TableCell>{formatDate(row.date)}</TableCell>
+                <TableCell><SelectStatus options={orderStatusOptions.filter((status) => status.id !== 0)}
+                    defaultValue={orderStatusOptions.find((status) => status.value === row.status || null)}
+                    placeholder="Status"
+                    onChange={status => newStatusOrder(row.orderId, status.value)}
+                />
+                </TableCell>
             </TableRow>
             <TableRow>
                 <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -48,7 +61,7 @@ export function Row(props) {
                                         <TableCell>Quantidade</TableCell>
                                         <TableCell>Produto</TableCell>
                                         <TableCell>Categoria</TableCell>
-                                        <TableCell></TableCell>
+                                        <TableCell>Imagem do Produto</TableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
@@ -60,7 +73,7 @@ export function Row(props) {
                                             <TableCell>{product.name}</TableCell>
                                             <TableCell>{product.category}</TableCell>
                                             <TableCell>
-                                                <img
+                                                <ProductImage
                                                     src={product.url}
                                                     alt={product.name}
                                                 />
@@ -84,8 +97,8 @@ Row.propTypes = {
         date: PropTypes.string.isRequired,
         products: PropTypes.arrayOf(
             PropTypes.shape({
-                id: PropTypes.string.isRequired,
-                category: PropTypes.number.isRequired,
+                id: PropTypes.number.isRequired,
+                category: PropTypes.string.isRequired,
                 name: PropTypes.string.isRequired,
                 price: PropTypes.number.isRequired,
                 quantity: PropTypes.number.isRequired,
