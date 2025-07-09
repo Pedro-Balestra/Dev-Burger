@@ -56,7 +56,7 @@ class OrderController {
 		});
 
 		const order = {
-			urser: {
+			user: {
 				id: req.userId,
 				name: req.userName,
 			},
