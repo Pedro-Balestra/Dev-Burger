@@ -32,8 +32,6 @@ export function Row({ row, orders, setOrders }) {
         } finally {
             setLoading(false);
         }
-
-        await api.put(`order/${id}`, { status })
     }
 
     return (
@@ -53,12 +51,15 @@ export function Row({ row, orders, setOrders }) {
                 </TableCell>
                 <TableCell>{row.name}</TableCell>
                 <TableCell>{formatDate(row.date)}</TableCell>
-                <TableCell><SelectStatus options={orderStatusOptions.filter((status) => status.id !== 0)}
-                    defaultValue={orderStatusOptions.find((status) => status.value === row.status || null)}
-                    placeholder="Status"
-                    onChange={status => newStatusOrder(row.orderId, status.value)}
-                    isLoading={loading}
-                />
+                <TableCell>
+                    <SelectStatus
+                        options={orderStatusOptions.filter((status) => status.id !== 0)}
+                        defaultValue={orderStatusOptions.find((status) => status.value === row.status || null)}
+                        placeholder="Status"
+                        onChange={status => newStatusOrder(row.orderId, status.value)}
+                        isLoading={loading}
+                        menuPortalTarget={document.body}
+                    />
                 </TableCell>
             </TableRow>
             <TableRow>

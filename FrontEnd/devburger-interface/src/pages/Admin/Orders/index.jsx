@@ -15,7 +15,7 @@ export function Orders() {
     const [orders, setOrders] = useState([]); //Backup
     const [filteredOrders, setFilteredOrders] = useState([]); //Os valores que estão na tela
     const [rows, setRows] = useState([]);
-    const [activeStatus, setActiveStatus] = useState([]);
+    const [activeStatus, setActiveStatus] = useState(0);
 
     useEffect(() => {
         async function loadOrders() {
@@ -42,7 +42,7 @@ export function Orders() {
     }, [filteredOrders]);
 
     function handleStatus(status) {
-        if(status.id === 0) {
+        if (status.id === 0) {
             setFilteredOrders(orders);
         } else {
             const newOrders = orders.filter(order => order.status === status.value);
@@ -50,6 +50,16 @@ export function Orders() {
         }
         setActiveStatus(status.id);
     }
+
+    useEffect(() => {
+        if (activeStatus === 0) {
+            setFilteredOrders(orders);
+        } else {
+            const statusIndex = orderStatusOptions.findIndex((item) => item.id === activeStatus,);
+            const newfilteredOrders = orders.filter(order => order.status === orderStatusOptions[statusIndex].value,);
+            setFilteredOrders(newfilteredOrders);
+        }
+    }, [orders]);
 
 
     return (
