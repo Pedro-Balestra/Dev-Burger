@@ -72,3 +72,9 @@ export const SubmitButton = styled(Button)`
     }
 `;
 
+export const ErrorMessage = styled.span`
+    color: ${(props) => props.theme.darkRed};
+    font-size: 14px;
+    line-height: 80%;
+    font-size: 600;
+`;
