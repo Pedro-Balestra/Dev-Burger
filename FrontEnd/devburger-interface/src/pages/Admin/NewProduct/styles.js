@@ -42,6 +42,8 @@ export const LabelUpload = styled.label`
     border-radius: 5px;
     padding: 10px;
     display: flex;
+    justify-content: center;
+    align-items: center;
     color: ${(props) => props.theme.white};
     margin-top: 8px;
 
@@ -49,7 +51,7 @@ export const LabelUpload = styled.label`
         width: 24px;
         height: 24px;
         fill: ${(props) => props.theme.white};
-        margin-right: 4px;
+        margin: 0 5px;
     }
 
     input{
@@ -57,7 +59,9 @@ export const LabelUpload = styled.label`
     }
 
 `;
-export const Select = styled(ReactSelect)``;
+export const Select = styled(ReactSelect)`
+    padding-top: 5px;
+`;
 export const SubmitButton = styled(Button)`
     margin-top: 16px;
     width: 100%;
