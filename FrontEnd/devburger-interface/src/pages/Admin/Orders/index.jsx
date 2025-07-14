@@ -11,6 +11,19 @@ import { orderStatusOptions } from './orderStatus';
 import { Row } from './row';
 import { Filter, FilterOptions } from './styles';
 
+function createData(order) {
+    return {
+        name: order.user.name,
+        orderId: order._id,
+        date: order.createdAt,
+        status: order.status,
+        products: order.products.map((product) => ({
+            ...product,
+            quantity: Number(product.quantity),
+        })),
+    };
+}
+
 export function Orders() {
     const [orders, setOrders] = useState([]); //Backup
     const [filteredOrders, setFilteredOrders] = useState([]); //Os valores que estão na tela
@@ -26,15 +39,7 @@ export function Orders() {
         loadOrders();
     }, []);
 
-    function createData(order) {
-        return {
-            name: order.user.name,
-            orderId: order._id,
-            date: order.createdAt,
-            status: order.status,
-            products: order.products,
-        };
-    }
+
 
     useEffect(() => {
         const newRows = filteredOrders.map(order => createData(order));
@@ -59,7 +64,7 @@ export function Orders() {
             const newfilteredOrders = orders.filter(order => order.status === orderStatusOptions[statusIndex].value,);
             setFilteredOrders(newfilteredOrders);
         }
-    }, [orders]);
+    }, [orders, activeStatus]);
 
 
     return (

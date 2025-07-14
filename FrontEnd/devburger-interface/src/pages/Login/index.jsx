@@ -53,7 +53,6 @@ export function Login() {
 				success: {
 					render() {
 						setTimeout(() => {
-							console.log(userData)
 							if (userData?.admin) {
 								navigate('/admin/pedidos');
 							} else {
