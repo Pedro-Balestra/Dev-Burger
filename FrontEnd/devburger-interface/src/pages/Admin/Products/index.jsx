@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { api } from "../../../services/api";
 import { formatPrice } from '../../../utils/formatPrice';
-import { Container, EditButton, ProductImage } from "./sytles";
+import { Container, EditButton, ProductImage } from "./styles";
 
 export function Products() {
     const [products, setProducts] = useState([]);
@@ -28,9 +28,8 @@ export function Products() {
     function isOffer(offer) {
         if (offer) {
             return <CheckCircleIcon color='#61A120' size='28' />;
-        } else {
-            return <XCircleIcon color='#FF3205' size='28' />;
         }
+        return <XCircleIcon color='#FF3205' size='28' />;
     }
 
     function editProduct(product) {
